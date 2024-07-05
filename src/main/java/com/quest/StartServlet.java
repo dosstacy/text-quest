@@ -35,7 +35,7 @@ public class StartServlet extends HttpServlet {
             req.setAttribute("noBranch", root.getNoBranch());
         }
 
-        req.getRequestDispatcher("/question.jsp").forward(req, resp);
+        req.getRequestDispatcher("/greeting.jsp").forward(req, resp);
     }
 }
 
