@@ -25,6 +25,7 @@ public class NextQuestionServlet extends HttpServlet {
             req.setAttribute("noBranch", nextNode.getNoBranch());
             req.getRequestDispatcher("/question.jsp").forward(req, resp);
         } else {
+            //req.getAttribute("end_answer", nextNode.getAnswer());
             req.getRequestDispatcher("/end.jsp").forward(req, resp);
         }
     }
