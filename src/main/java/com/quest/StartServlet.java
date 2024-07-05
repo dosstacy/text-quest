@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/start")
@@ -24,7 +25,9 @@ public class StartServlet extends HttpServlet {
         String username = req.getParameter("username");
         req.setAttribute("username", username);
 
-        // Передайте перше питання до JSP
+        HttpSession session = req.getSession();
+        session.setAttribute("username", username);
+
         TreeNode root = (TreeNode) getServletContext().getAttribute("root");
         if (root != null) {
             req.setAttribute("question", root.getQuestion());

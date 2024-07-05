@@ -11,14 +11,14 @@ import java.io.IOException;
 public class NextQuestionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
+        String username = (String) req.getSession().getAttribute("username");
         String answer = req.getParameter("answer");
         String currentNodeQuestion = req.getParameter("currentNode");
 
         TreeNode currentNode = findNodeByQuestion((TreeNode) getServletContext().getAttribute("root"), currentNodeQuestion);
         TreeNode nextNode = "Yes".equals(answer) ? currentNode.getYesBranch() : currentNode.getNoBranch();
 
-        req.setAttribute("username", username);
+        req.getSession().setAttribute("username", username);
         if (nextNode != null) {
             req.setAttribute("question", nextNode.getQuestion());
             req.setAttribute("yesBranch", nextNode.getYesBranch());
