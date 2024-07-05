@@ -6,15 +6,5 @@
     <input type="text" id="username" name="username"><br>
     <input type="submit" value="Submit">
 </form>
-
-<%
-    String username = (String) session.getAttribute("username");
-
-    if (username != null) {
-%>
-<h2>Hello, <%= username %>!</h2>
-<%
-    }
-%>
 </body>
 </html>
