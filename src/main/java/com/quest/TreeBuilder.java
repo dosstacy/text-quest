@@ -18,7 +18,7 @@ public class TreeBuilder {
             return null;
         }
 
-        TreeNode node = new TreeNode(jsonNode.get("question").asText());
+        TreeNode node = new TreeNode(jsonNode.get("question").asText(), jsonNode.get("answer").asText());
 
         if (jsonNode.has("yes")) {
             node.setYesBranch(buildTree(jsonNode.get("yes")));
