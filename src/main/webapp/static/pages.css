@@ -1,0 +1,39 @@
+body{
+    background-image: url("img/page.png");
+    background-color: #E6E0D6;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h2{
+    justify-content: center;
+    display: flex;
+    padding-top: 15%;
+}
+
+h3{
+    justify-content: center;
+    display: flex;
+    font-size: 2em;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    border-radius: 50px;
+    margin: 10px;
+    width: 10em;
+}
+
+input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+}
