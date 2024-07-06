@@ -19,8 +19,8 @@ public class TreeBuilder {
         }
 
         TreeNode node = new TreeNode(
-                jsonNode.has("question") ? jsonNode.get("question").asText() : "defaultQuestion",
-                jsonNode.has("answer") ? jsonNode.get("answer").asText() : "defaultAnswer"
+                jsonNode.get("question").asText(),
+                jsonNode.has("isFinal") && jsonNode.get("isFinal").asBoolean()
         );
 
         if (jsonNode.has("yes")) {

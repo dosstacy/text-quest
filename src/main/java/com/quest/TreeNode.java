@@ -4,11 +4,11 @@ public class TreeNode {
     private String question;
     private TreeNode yesBranch;
     private TreeNode noBranch;
-    private String answer;
+    private Boolean isFinal;
 
-    public TreeNode(String question, String answer) {
+    public TreeNode(String question, Boolean isFinal) {
         this.question = question;
-        this.answer = answer;
+        this.isFinal = isFinal;
     }
 
     public String getQuestion() {
@@ -31,11 +31,11 @@ public class TreeNode {
         this.noBranch = noBranch;
     }
 
-    public String getAnswer() {
-        return answer;
+    public Boolean getFinal() {
+        return isFinal;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setFinal(Boolean aFinal) {
+        isFinal = aFinal;
     }
 }
