@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%
     String backgroundImage = "";
     String question = (String) request.getSession().getAttribute("question");
@@ -24,6 +24,8 @@
 %>
 <html>
 <head>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/end.css">
     <style>
         body {
@@ -31,8 +33,14 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
         }
     </style>
+    <title>Quest</title>
 </head>
 <body>
 <h2>${question}</h2>
@@ -41,12 +49,13 @@
 <script>
     function restart() {
         $.ajax({
-            url: '/restart',
+            url: '/quest/restart',
             type: 'POST',
             contentType: 'application/json;charset=UTF-8',
-            async: false,
+            async: true,
             success: function () {
-                location.reload();
+                window.location.href = '/quest';
+                console.log(sessionStorage)
             }
         });
     }

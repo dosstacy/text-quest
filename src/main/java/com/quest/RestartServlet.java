@@ -18,7 +18,7 @@ public class RestartServlet extends HttpServlet {
         LOGGER.info("Invalidating session and redirecting to /start");
         try {
             req.getSession().invalidate();
-            resp.sendRedirect("/start");
+            resp.sendRedirect("/quest/");
         }catch (IOException e){
             LOGGER.error("IOException occurred while redirecting to /start", e);
             throw e;
