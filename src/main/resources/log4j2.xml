@@ -5,8 +5,8 @@
     </Properties>
 
     <Appenders>
-        <RollingFile name="FILE" fileName="${APP_LOG_ROOT}/quest.log"
-                     filePattern="${APP_LOG_ROOT}/quest-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="FILE" fileName="${APP_LOG_ROOT}/text-quest.log"
+                     filePattern="${APP_LOG_ROOT}/tic-tac-toe-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="19500KB" />

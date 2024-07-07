@@ -1,8 +1,9 @@
 package com.quest;
+import com.fasterxml.jackson.core.JsonParser;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 class TreeBuilderTest {
@@ -10,7 +11,7 @@ class TreeBuilderTest {
     @Test
     public void testBuildTreeFromJson() throws IOException {
         TreeBuilder builder = new TreeBuilder();
-        TreeNode root = builder.buildTreeFromJson(Paths.get("src", "main", "resources", "questions.json").toString());
+        TreeNode root = builder.buildTreeFromJson(Objects.requireNonNull(JsonParser.class.getClassLoader().getResource("questions.json")).getFile());
 
         assertNotNull(root);
         assertEquals("Do you want to start a journey to another world?", root.getQuestion());

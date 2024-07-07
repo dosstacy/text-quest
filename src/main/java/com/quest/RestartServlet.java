@@ -15,12 +15,12 @@ public class RestartServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        LOGGER.info("Invalidating session and redirecting to /start");
+        LOGGER.info("Invalidating session and redirecting to /quest");
         try {
             req.getSession().invalidate();
             resp.sendRedirect("/quest/");
         }catch (IOException e){
-            LOGGER.error("IOException occurred while redirecting to /start", e);
+            LOGGER.error("IOException occurred while redirecting to /quest", e);
             throw e;
         }
     }

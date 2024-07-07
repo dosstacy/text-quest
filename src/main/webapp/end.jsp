@@ -5,7 +5,7 @@
     if (question != null) {
         if (question.contains("beast")) {
             backgroundImage = "black.png";
-        } else if (question.contains("animals") || question.contains("escape from dragon")) {
+        } else if (question.contains("animals") || question.contains("escape from the dragon")) {
             backgroundImage = "village.png";
         } else if (question.contains("forest")) {
             backgroundImage = "forest.png";

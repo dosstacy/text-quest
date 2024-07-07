@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/next")
 public class NextQuestionServlet extends HttpServlet {
-    private static final String INDEX = "index.jsp";
+    private static final String END = "end.jsp";
     private static final String QUEST = "/question.jsp";
     private static final Logger LOGGER = LogManager.getLogger(NextQuestionServlet.class);
 
@@ -38,7 +38,7 @@ public class NextQuestionServlet extends HttpServlet {
             LOGGER.info("Last node question: {}", currentNodeQuestion);
             req.setAttribute("question", nextNode.getQuestion());
             req.getSession().setAttribute("question", nextNode.getQuestion());
-            req.getRequestDispatcher(INDEX).forward(req, resp);
+            req.getRequestDispatcher(END).forward(req, resp);
         }
         LOGGER.info("Forwarding to next question or end page.");
     }
