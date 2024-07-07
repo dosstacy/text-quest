@@ -33,15 +33,16 @@ class StartServletTest {
         request = mock(HttpServletRequest.class);
         response = mock(HttpServletResponse.class);
         session = mock(HttpSession.class);
+        requestDispatcher = mock(RequestDispatcher.class);
+
+        when(request.getSession()).thenReturn(session);
     }
 
     @Test
     public void testDoGet() throws Exception {
         when(request.getParameter("username")).thenReturn("testUser");
-        when(request.getSession()).thenReturn(session);
         when(servletContext.getAttribute("root")).thenReturn(new TreeNode("Test Question", true));
 
-        requestDispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("/greeting.jsp")).thenReturn(requestDispatcher);
 
         startServlet.doGet(request, response);
@@ -55,10 +56,8 @@ class StartServletTest {
     @Test
     public void testDoPost() throws Exception {
         when(request.getParameter("username")).thenReturn("testUser");
-        when(request.getSession()).thenReturn(session);
         when(servletContext.getAttribute("root")).thenReturn(new TreeNode("Test Question", true));
 
-        requestDispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("/greeting.jsp")).thenReturn(requestDispatcher);
 
         startServlet.doPost(request, response);

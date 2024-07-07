@@ -34,12 +34,11 @@ class RestartServletTest {
         request = mock(HttpServletRequest.class);
         response = mock(HttpServletResponse.class);
         session = mock(HttpSession.class);
+        when(request.getSession()).thenReturn(session);
     }
 
     @Test
     public void testDoPost() throws Exception {
-        when(request.getSession()).thenReturn(session);
-
         restartServlet.doPost(request, response);
 
         verify(session).invalidate();
@@ -48,7 +47,6 @@ class RestartServletTest {
 
     @Test
     public void testDoPostWithIOException() throws Exception {
-        when(request.getSession()).thenReturn(session);
         doThrow(new IOException()).when(response).sendRedirect("/quest/");
 
         assertThrows(IOException.class, () -> restartServlet.doPost(request, response));
