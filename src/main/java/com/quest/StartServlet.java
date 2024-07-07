@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/start")
 public class StartServlet extends HttpServlet {
+    private static final String GREETING_PAGE = "/greeting.jsp";
     private static final Logger LOGGER = LogManager.getLogger(StartServlet.class);
 
     @Override
@@ -45,7 +46,7 @@ public class StartServlet extends HttpServlet {
             LOGGER.warn("Root node is null");
         }
 
-        req.getRequestDispatcher("/greeting.jsp").forward(req, resp);
+        req.getRequestDispatcher(GREETING_PAGE).forward(req, resp);
     }
 }
 

@@ -12,6 +12,8 @@ import java.io.IOException;
 
 @WebServlet("/next")
 public class NextQuestionServlet extends HttpServlet {
+    private static final String INDEX = "index.jsp";
+    private static final String QUEST = "/question.jsp";
     private static final Logger LOGGER = LogManager.getLogger(NextQuestionServlet.class);
 
     @Override
@@ -31,12 +33,12 @@ public class NextQuestionServlet extends HttpServlet {
             req.getSession().setAttribute("question", nextNode.getQuestion());
             req.setAttribute("yesBranch", nextNode.getYesBranch());
             req.setAttribute("noBranch", nextNode.getNoBranch());
-            req.getRequestDispatcher("/question.jsp").forward(req, resp);
+            req.getRequestDispatcher(QUEST).forward(req, resp);
         } else {
             LOGGER.info("Last node question: {}", currentNodeQuestion);
             req.setAttribute("question", nextNode.getQuestion());
             req.getSession().setAttribute("question", nextNode.getQuestion());
-            req.getRequestDispatcher("/end.jsp").forward(req, resp);
+            req.getRequestDispatcher(INDEX).forward(req, resp);
         }
         LOGGER.info("Forwarding to next question or end page.");
     }
