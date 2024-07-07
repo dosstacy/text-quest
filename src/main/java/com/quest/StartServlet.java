@@ -17,11 +17,13 @@ public class StartServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.info("doPost");
         processRequest(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.info("doGet");
         processRequest(req, resp);
     }
 
@@ -39,6 +41,8 @@ public class StartServlet extends HttpServlet {
             req.setAttribute("final", root.getFinal());
             req.setAttribute("yesBranch", root.getYesBranch());
             req.setAttribute("noBranch", root.getNoBranch());
+        }else{
+            LOGGER.warn("Root node is null");
         }
 
         req.getRequestDispatcher("/greeting.jsp").forward(req, resp);
