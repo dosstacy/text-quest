@@ -12,7 +12,7 @@ public class TreeBuilder {
     private static final Logger LOGGER = LogManager.getLogger(TreeBuilder.class);
 
     public TreeNode buildTreeFromJson(String filePath) throws IOException {
-        LOGGER.info("Building tree from file: {}", filePath);
+        LOGGER.debug("Building tree from file: {}", filePath);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(new File(filePath));
         return buildTree(rootNode);
@@ -29,7 +29,7 @@ public class TreeBuilder {
                 jsonNode.has("isFinal") && jsonNode.get("isFinal").asBoolean()
         );
 
-        LOGGER.info("Created TreeNode with question: {}", node.getQuestion());
+        LOGGER.debug("Created TreeNode with question: {}", node.getQuestion());
 
         if (jsonNode.has("yes")) {
             node.setYesBranch(buildTree(jsonNode.get("yes")));

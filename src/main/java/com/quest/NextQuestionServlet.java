@@ -22,7 +22,7 @@ public class NextQuestionServlet extends HttpServlet {
         String answer = req.getParameter("answer");
         String currentNodeQuestion = req.getParameter("currentNode");
 
-        LOGGER.info("Received request from user: {} with answer: {} for question: {}", username, answer, currentNodeQuestion);
+        LOGGER.debug("Received request from user: {} with answer: {} for question: {}", username, answer, currentNodeQuestion);
 
         TreeNode currentNode = findNodeByQuestion((TreeNode) getServletContext().getAttribute("root"), currentNodeQuestion);
         TreeNode nextNode = "Yes".equals(answer) ? currentNode.getYesBranch() : currentNode.getNoBranch();
@@ -35,7 +35,7 @@ public class NextQuestionServlet extends HttpServlet {
             req.setAttribute("noBranch", nextNode.getNoBranch());
             req.getRequestDispatcher(QUEST).forward(req, resp);
         } else {
-            LOGGER.info("Last node question: {}", currentNodeQuestion);
+            LOGGER.debug("Last node question: {}", currentNodeQuestion);
             req.setAttribute("question", nextNode.getQuestion());
             req.getSession().setAttribute("question", nextNode.getQuestion());
             req.getRequestDispatcher(END).forward(req, resp);
