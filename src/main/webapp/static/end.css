@@ -1,20 +1,21 @@
-h3 {
+h2 {
     width: 55%;
     word-wrap: break-word;
     white-space: normal;
     margin: 0 auto;
     text-align: center;
-    padding-top: 15%;
+    padding-top: 18%;
     font-size: 2em;
-}
-
-form {
-    display: flex;
     justify-content: center;
-    margin: 2%;
+    display: flex;
 }
 
-input[type="submit"] {
+h3{
+    justify-content: center;
+    display: flex;
+}
+
+button{
     background-color: black;
     color: white;
     border: none;
@@ -24,8 +25,7 @@ input[type="submit"] {
     width: 10em;
 }
 
-input[type="submit"]:hover {
+button:hover{
     background-color: white;
     color: black;
 }
-

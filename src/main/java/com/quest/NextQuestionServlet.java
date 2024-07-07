@@ -21,11 +21,13 @@ public class NextQuestionServlet extends HttpServlet {
         req.getSession().setAttribute("username", username);
         if (!nextNode.getFinal()) {
             req.setAttribute("question", nextNode.getQuestion());
+            req.getSession().setAttribute("question", nextNode.getQuestion());
             req.setAttribute("yesBranch", nextNode.getYesBranch());
             req.setAttribute("noBranch", nextNode.getNoBranch());
             req.getRequestDispatcher("/question.jsp").forward(req, resp);
         } else {
             req.setAttribute("question", nextNode.getQuestion());
+            req.getSession().setAttribute("question", nextNode.getQuestion());
             req.getRequestDispatcher("/end.jsp").forward(req, resp);
         }
     }

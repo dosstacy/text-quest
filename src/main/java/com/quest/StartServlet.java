@@ -31,6 +31,7 @@ public class StartServlet extends HttpServlet {
         TreeNode root = (TreeNode) getServletContext().getAttribute("root");
         if (root != null) {
             req.setAttribute("question", root.getQuestion());
+            req.getSession().setAttribute("question", root.getQuestion());
             req.setAttribute("final", root.getFinal());
             req.setAttribute("yesBranch", root.getYesBranch());
             req.setAttribute("noBranch", root.getNoBranch());

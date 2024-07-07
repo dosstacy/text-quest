@@ -1,17 +1,26 @@
-h3 {
-    width: 55%;
-    word-wrap: break-word;
-    white-space: normal;
-    margin: 0 auto;
-    text-align: center;
+body{
+    background-image: url("img/page.png");
+    background-color: #E6E0D6;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h2{
+    justify-content: center;
+    display: flex;
     padding-top: 15%;
+}
+
+h3{
+    justify-content: center;
+    display: flex;
     font-size: 2em;
 }
 
 form {
     display: flex;
     justify-content: center;
-    margin: 2%;
 }
 
 input[type="submit"] {
@@ -28,4 +37,3 @@ input[type="submit"]:hover {
     background-color: white;
     color: black;
 }
-

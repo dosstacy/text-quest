@@ -44,7 +44,7 @@
     "no": {
       "question": "You decide to stay put and wait for help. You are being attacked by wild animals. Do you fight?",
       "yes": {
-        "question": "You defeat the beasts and decide to explore the forest. You find a village and start a new life. Your journey is complete.",
+        "question": "You defeat the animals and decide to explore the forest. You find a village and start a new life. Your journey is complete.",
         "isFinal": true
       },
       "no": {
