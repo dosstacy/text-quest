@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/index.css">
+    <title>Quest</title>
 </head>
 <body>
 <h2>Hello user!</h2>
