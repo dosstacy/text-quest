@@ -1,5 +1,8 @@
 package com.quest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,8 @@ import java.io.IOException;
 
 @WebServlet("/next")
 public class NextQuestionServlet extends HttpServlet {
+    private static final Logger LOGGER = LogManager.getLogger(NextQuestionServlet.class);
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = (String) req.getSession().getAttribute("username");
@@ -26,6 +31,7 @@ public class NextQuestionServlet extends HttpServlet {
             req.setAttribute("noBranch", nextNode.getNoBranch());
             req.getRequestDispatcher("/question.jsp").forward(req, resp);
         } else {
+            LOGGER.info("Last node question: {}", currentNodeQuestion);
             req.setAttribute("question", nextNode.getQuestion());
             req.getSession().setAttribute("question", nextNode.getQuestion());
             req.getRequestDispatcher("/end.jsp").forward(req, resp);
@@ -34,6 +40,7 @@ public class NextQuestionServlet extends HttpServlet {
 
     private TreeNode findNodeByQuestion(TreeNode root, String question) {
         if (root == null) {
+            LOGGER.warn("root is null");
             return null;
         }
         if (root.getQuestion().equals(question)) {
