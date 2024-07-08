@@ -11,22 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/start")
+@WebServlet(value = "/start")
 public class StartServlet extends HttpServlet {
     private static final String GREETING_PAGE = "/greeting.jsp";
-    private static final Logger LOGGER = LogManager.getLogger(StartServlet.class);
+    private static final Logger LOGGER = LogManager.getLogger(StartQuestServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(GREETING_PAGE).forward(req, resp);
-    }
-
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String username = req.getParameter("username");
         req.setAttribute("username", username);
 
@@ -47,4 +43,3 @@ public class StartServlet extends HttpServlet {
         req.getRequestDispatcher(GREETING_PAGE).forward(req, resp);
     }
 }
-

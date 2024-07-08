@@ -39,21 +39,6 @@ class StartServletTest {
     }
 
     @Test
-    public void testDoGet() throws Exception {
-        when(request.getParameter("username")).thenReturn("testUser");
-        when(servletContext.getAttribute("root")).thenReturn(new TreeNode("Test Question", true));
-
-        when(request.getRequestDispatcher("/greeting.jsp")).thenReturn(requestDispatcher);
-
-        startServlet.doGet(request, response);
-
-        verify(request).setAttribute("username", "testUser");
-        verify(session).setAttribute("username", "testUser");
-        verify(request).setAttribute("question", "Test Question");
-        verify(requestDispatcher).forward(request, response);
-    }
-
-    @Test
     public void testDoPost() throws Exception {
         when(request.getParameter("username")).thenReturn("testUser");
         when(servletContext.getAttribute("root")).thenReturn(new TreeNode("Test Question", true));
