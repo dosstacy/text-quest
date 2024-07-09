@@ -26,7 +26,7 @@
 %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/pages.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/quest.css">
     <style>
         body {
             background-image: url('static/img/<%= backgroundImage %>');
@@ -38,9 +38,7 @@
 </head>
 <body>
 <h3>${question}</h3>
-<form action="${pageContext.request.contextPath}/next" method="post">
-    <input type="hidden" name="username" value="${username}">
-    <input type="hidden" name="currentNode" value="${question}">
+<form action="${pageContext.request.contextPath}/quest" method="post">
     <input type="submit" name="answer" value="Yes">
     <input type="submit" name="answer" value="No">
 </form>

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import static org.mockito.Mockito.*;
 
-class NextQuestionServletTest {
-    private NextQuestionServlet nextQuestionServlet;
+class QuestServletTest {
+    private QuestServlet questServlet;
     private HttpServletRequest request;
     private HttpServletResponse response;
     private ServletContext servletContext;
@@ -22,12 +22,12 @@ class NextQuestionServletTest {
 
     @BeforeEach
     public void setUp() throws ServletException {
-        nextQuestionServlet = new NextQuestionServlet();
+        questServlet = new QuestServlet();
 
         ServletConfig config = mock(ServletConfig.class);
         servletContext = mock(ServletContext.class);
         when(config.getServletContext()).thenReturn(servletContext);
-        nextQuestionServlet.init(config);
+        questServlet.init(config);
 
         request = mock(HttpServletRequest.class);
         response = mock(HttpServletResponse.class);
@@ -49,7 +49,7 @@ class NextQuestionServletTest {
 
         when(request.getRequestDispatcher("/question.jsp")).thenReturn(dispatcher);
 
-        nextQuestionServlet.doPost(request, response);
+        questServlet.doPost(request, response);
 
         verify(request).setAttribute("question", "Does it have fur?");
         verify(dispatcher).forward(request, response);
@@ -65,7 +65,7 @@ class NextQuestionServletTest {
         when(request.getParameter("answer")).thenReturn("Yes");
         when(request.getRequestDispatcher("/end.jsp")).thenReturn(dispatcher);
 
-        nextQuestionServlet.doPost(request, response);
+        questServlet.doPost(request, response);
 
         verify(request).setAttribute("question", "It's a cat!");
         verify(dispatcher).forward(request, response);
