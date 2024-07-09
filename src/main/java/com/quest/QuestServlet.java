@@ -37,12 +37,11 @@ public class QuestServlet extends HttpServlet {
 
         TreeNode nextNode = answer.equals("Yes") ? currentNode.getYesBranch() : currentNode.getNoBranch();
 
+        session.setAttribute("question", nextNode.getQuestion());
         if (!nextNode.getFinal()) {
-            session.setAttribute("question", nextNode.getQuestion());
             getServletContext().getRequestDispatcher(QUEST_JSP).forward(req, resp);
         } else {
             LOGGER.debug("Last node question: {}", currentNodeQuestion);
-            session.setAttribute("question", nextNode.getQuestion());
             getServletContext().getRequestDispatcher(END_JSP).forward(req, resp);
         }
         LOGGER.info("Forwarding to next question or end page.");
