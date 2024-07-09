@@ -11,16 +11,21 @@ import java.io.IOException;
 public class TreeBuilder {
     private static final Logger LOGGER = LogManager.getLogger(TreeBuilder.class);
 
-    public TreeNode buildTreeFromJson(String filePath) throws IOException {
+    public TreeNode buildTreeFromJson(String filePath) {
         LOGGER.debug("Building tree from file: {}", filePath);
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(new File(filePath));
-        return buildTree(rootNode);
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode rootNode = mapper.readTree(new File(filePath));
+            return buildTree(rootNode);
+        } catch (IOException e) {
+            LOGGER.error("Error while building tree from file", e);
+            throw new RuntimeException("Error while building tree from file", e);
+        }
     }
 
     private TreeNode buildTree(JsonNode jsonNode) {
         if (jsonNode == null || !jsonNode.has("question")) {
-            LOGGER.warn("Invalid JSON node: {}", jsonNode);
+            LOGGER.error("Invalid JSON node: {}", jsonNode);
             return null;
         }
 
@@ -38,7 +43,6 @@ public class TreeBuilder {
         if (jsonNode.has("no")) {
             node.setNoBranch(buildTree(jsonNode.get("no")));
         }
-
         return node;
     }
 }
