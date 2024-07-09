@@ -13,33 +13,32 @@ import java.io.IOException;
 
 @WebServlet(value = "/start")
 public class StartServlet extends HttpServlet {
-    private static final String GREETING_PAGE = "/greeting.jsp";
-    private static final Logger LOGGER = LogManager.getLogger(StartQuestServlet.class);
+    private static final String GREETING_PAGE = "/greeting";
+    private static final String START_JSP = "/start.jsp";
+    private static final Logger LOGGER = LogManager.getLogger(StartServlet.class);
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher(START_JSP).forward(req, resp);
     }
 
-    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("username");
-        req.setAttribute("username", username);
 
         HttpSession session = req.getSession();
         session.setAttribute("username", username);
 
-        TreeNode root = (TreeNode) getServletContext().getAttribute("root");
+        TreeNode root = TreeNode.treeInitializer();
         if (root != null) {
-            req.setAttribute("question", root.getQuestion());
-            req.getSession().setAttribute("question", root.getQuestion());
-            req.setAttribute("final", root.getFinal());
-            req.setAttribute("yesBranch", root.getYesBranch());
-            req.setAttribute("noBranch", root.getNoBranch());
-        }else{
-            LOGGER.warn("Root node is null");
+            session.setAttribute("root", root);
+            session.setAttribute("question", root.getQuestion());
+        } else {
+            LOGGER.error("Root node is null");
+            resp.sendRedirect(START_JSP);
+            return;
         }
 
-        req.getRequestDispatcher(GREETING_PAGE).forward(req, resp);
+        resp.sendRedirect(GREETING_PAGE);
     }
 }

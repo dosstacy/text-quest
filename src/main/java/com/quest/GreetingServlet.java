@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/quest")
-public class StartQuestServlet extends HttpServlet {
-    private static final String GREETING_PAGE = "/greeting.jsp";
+@WebServlet("/greeting")
+public class GreetingServlet extends HttpServlet {
+    private static final String GREETING_JSP = "/greeting.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(GREETING_PAGE).forward(req, resp);
+        getServletContext().getRequestDispatcher(GREETING_JSP).forward(req, resp);
     }
 }
 
