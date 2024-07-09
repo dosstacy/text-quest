@@ -1,0 +1,60 @@
+{
+  "question": "Do you want to start a journey to another world?",
+  "yes": {
+    "question": "You wake up in an unknown place. Around you is a strange forest with unfamiliar plants. You don't remember how you got here. Will you explore the forest?",
+    "yes": {
+      "question": "You decide to explore the forest and find an old man who offers to help. Do you accept his offer?",
+      "yes": {
+        "question": "The old man takes you to the village. There you learn that you are in another world. You are offered the chance to become a warrior or a magician. Do you want to become a warrior?",
+        "yes": {
+          "question": "You became a warrior and began to defend the village from monsters. One day you are attacked by a dragon. Do you fight the dragon?",
+          "yes": {
+            "question": "You defeat the dragon and become a hero. Your life is now full of glory. Your journey is complete.",
+            "isFinal": true
+          },
+          "no": {
+            "question": "You escape from the dragon and continue to live in the village, helping the villagers. Your journey is complete.",
+            "isFinal": true
+          }
+        },
+        "no": {
+          "question": "You became a mage and began to study magic. One day you found an ancient artifact. Do you use it?",
+          "yes": {
+            "question": "The artifact gives you incredible power. You become the most powerful mage and help people. Your journey is complete.",
+            "isFinal": true
+          },
+          "no": {
+            "question": "You decide not to use the artifact and continue to learn magic. Your journey is complete.",
+            "isFinal": true
+          }
+        }
+      },
+      "no": {
+        "question": "You refuse help and continue to explore the forest on your own. You find an abandoned temple. Do you go inside?",
+        "yes": {
+          "question": "In the temple, you find a magical portal that brings you home. Your journey is complete.",
+          "isFinal": true
+        },
+        "no": {
+          "question": "You decide not to enter the temple and return to the forest. You continue to live in the forest, looking for a way to return home. Your journey is complete.",
+          "isFinal": true
+        }
+      }
+    },
+    "no": {
+      "question": "You decide to stay put and wait for help. You are being attacked by wild animals. Do you fight?",
+      "yes": {
+        "question": "You defeat the animals and decide to explore the forest. You find a village and start a new life. Your journey is complete.",
+        "isFinal": true
+      },
+      "no": {
+        "question": "The beasts defeat you. Your journey is over.",
+        "isFinal": true
+      }
+    }
+  },
+  "no": {
+    "question": "Okay, then do something useful ;)",
+    "isFinal": true
+  }
+}

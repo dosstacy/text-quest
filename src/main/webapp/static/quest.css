@@ -1,0 +1,32 @@
+h3 {
+    width: 55%;
+    word-wrap: break-word;
+    white-space: normal;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15%;
+    font-size: 2em;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    border-radius: 50px;
+    margin: 10px;
+    width: 10em;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+}
+
