@@ -49,12 +49,12 @@
 <script>
     function restart() {
         $.ajax({
-            url: '/quest/restart',
+            url: '/restart',
             type: 'POST',
             contentType: 'application/json;charset=UTF-8',
             async: true,
             success: function () {
-                window.location.href = '/quest';
+                window.location.href = '/start';
                 console.log(sessionStorage)
             }
         });
